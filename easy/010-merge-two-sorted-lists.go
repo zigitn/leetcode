@@ -7,7 +7,6 @@ type ListNode struct {
 	Next *ListNode
 }
 
-
 func main() {
 	l3 := ListNode{
 		Val:  3,
@@ -34,26 +33,23 @@ func main() {
 		Val:  1,
 		Next: &l5,
 	}
-	printListNode(mergeTwoLists(&l1,&l4))
+	printListNode(mergeTwoLists(&l1, &l4))
 }
 
-
-
-
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-	if l1 == nil{
+	if l1 == nil {
 		return l2
 	}
-	if l2 == nil{
+	if l2 == nil {
 		return l1
 	}
 	var res *ListNode
-	if l1.Val >= l2.Val{
+	if l1.Val >= l2.Val {
 		res = l2
-		res.Next = mergeTwoLists(l1,l2.Next)
-	}else{
+		res.Next = mergeTwoLists(l1, l2.Next)
+	} else {
 		res = l1
-		res.Next = mergeTwoLists(l1.Next,l2)
+		res.Next = mergeTwoLists(l1.Next, l2)
 	}
 	return res
 }
