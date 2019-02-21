@@ -1,11 +1,14 @@
 package main
 
+import "fmt"
+
 func main() {
+	//测试代码消除IDE错误提示
+	fmt.Println(isSymmetric(nil))
 }
 
 func isSymmetric(root *TreeNode) bool {
 	return isMirror(root, root)
-
 }
 
 func isMirror(t1, t2 *TreeNode) bool {
