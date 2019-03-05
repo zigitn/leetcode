@@ -5,11 +5,11 @@ import (
 	"sync"
 )
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+// type TreeNode struct {
+// 	Val   int
+// 	Left  *TreeNode
+// 	Right *TreeNode
+// }
 
 func main() {
 	node1 := TreeNode{1, nil, nil}
