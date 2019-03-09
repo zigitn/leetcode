@@ -14,8 +14,8 @@ func isValid(s string) bool {
 	for _, char := range s {
 		if char == '(' || char == '{' || char == '[' {
 			stack = append(stack, char)
-		} else if len(stack) > 0 && brackets[char] == stack[len(stack) - 1] {
-			stack = stack[:len(stack) - 1]
+		} else if len(stack) > 0 && brackets[char] == stack[len(stack)-1] {
+			stack = stack[:len(stack)-1]
 		} else {
 			return false
 		}

@@ -23,4 +23,3 @@ func removeDuplicates(nums []int) int {
 	}
 	return i + 1
 }
-

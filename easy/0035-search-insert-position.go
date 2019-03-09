@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	nums := []int{1,8}
+	nums := []int{1, 8}
 	target := 7
 	fmt.Println(searchInsert(nums, target))
 }
@@ -16,7 +16,7 @@ func searchInsert(nums []int, target int) int {
 		if target == v {
 			return k
 		} else if target > v {
-			index = k+1
+			index = k + 1
 			continue
 		}
 		return index
