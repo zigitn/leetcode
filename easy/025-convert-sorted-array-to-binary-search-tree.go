@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type TreeNode struct {
 	Val   int
@@ -11,40 +9,26 @@ type TreeNode struct {
 }
 
 func main() {
-	testData := []int{-10, -3, 0, 5, 9}
-
-	sortedArrayToBST(testData)
-	fmt.Println("1")
+	a := sortedArrayToBST([]int{-11, -10, -3, 0, 5, 9, 10})
+	fmt.Println(a)
 }
 
 func sortedArrayToBST(nums []int) *TreeNode {
-	tmpLen := len(nums) / 2
-	tmp := TreeNode{nums[tmpLen], nil, nil}
-
-	// wg:=sync.WaitGroup{}
-	//
-	// wg.Add(1)
-	creatLeftTree(&tmp, nums[:tmpLen], tmpLen-1)
-	creatRightTree(&tmp, nums[tmpLen+1:])
-
-	return &tmp
-}
-
-func creatLeftTree(node *TreeNode, nums []int, l int) {
-	node.Left = &TreeNode{nums[l], nil, nil}
-	if l == 0 {
-		return
-	} else {
-		l--
-		creatLeftTree(node.Left, nums[:l+1], l)
+	if len(nums) == 0 {
+		return nil
 	}
+	return buildTree(nums)
 }
-func creatRightTree(node *TreeNode, nums []int) {
-	node.Right = &TreeNode{nums[0], nil, nil}
-
-	if tmpLen := len(nums[1:]); tmpLen == 0 {
-		return
-	} else {
-		creatRightTree(node.Right, nums[1:])
+func buildTree(nums []int) *TreeNode {
+	if len(nums) == 0 {
+		return nil
+	}
+	if len(nums) == 1 {
+		return &TreeNode{Val: nums[0]}
+	}
+	return &TreeNode{
+		Val:   nums[len(nums)/2],
+		Left:  buildTree(nums[:len(nums)/2]),
+		Right: buildTree(nums[len(nums)/2+1:]),
 	}
 }
