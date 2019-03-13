@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type TreeNode struct {
 	Val   int
@@ -19,5 +21,32 @@ func main() {
 }
 
 func isBalanced(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	if intAbs(countFloor(root.Left)-countFloor(root.Right)) > 1 {
+		return false
+	} else if isBalanced(root.Left) && isBalanced(root.Right) {
+		return true
+	}
 	return false
+}
+func countFloor(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	return 1 + max(countFloor(root.Left), countFloor(root.Right))
+}
+func max(a int, b int) int {
+	if a > b {
+		return a
+	} else {
+	}
+	return b
+}
+func intAbs(i int) int {
+	if i < 0 {
+		return -i
+	}
+	return i
 }
